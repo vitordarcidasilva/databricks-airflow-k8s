@@ -1,4 +1,4 @@
-# Trigger Databricks Notebook
+# Trigger Databricks Notebook 1
 
 from airflow.sdk import DAG
 from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator
