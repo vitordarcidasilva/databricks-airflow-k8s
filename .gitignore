@@ -1,0 +1,45 @@
+# Secrets
+k8s/secrets/git-secrets.yaml
+k8s/secrets/*-secrets.yaml
+k8s/secrets/*.yaml
+*secret*.yaml
+*secret*.yml
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Airflow
+airflow.db
+airflow.cfg
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+

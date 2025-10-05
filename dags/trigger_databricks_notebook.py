@@ -16,5 +16,3 @@ with DAG(
     )
 
     run_notebooks
-
-
