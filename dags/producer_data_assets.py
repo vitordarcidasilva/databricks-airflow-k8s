@@ -37,12 +37,12 @@ def produce_data_assets():
     s3_hook.load_file(
         filename=posts_file,
         key="raw/Posts.xml",
-        bucket_name="data-platform-tutorial",
+        bucket_name="external-mount-volume",
         replace=True
     )
     s3_hook.load_file(
         filename=users_file,
         key="raw/Users.xml",
-        bucket_name="data-platform-tutorial",
+        bucket_name="external-mount-volume",
         replace=True
     )

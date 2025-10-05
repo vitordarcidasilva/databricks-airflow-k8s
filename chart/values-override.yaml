@@ -9,6 +9,15 @@ images:
     digest: ~
     pullPolicy: IfNotPresent
 
+logs:
+  persistence:
+    # Enable persistent volume for storing logs
+    enabled: True
+    # If using a custom storageClass, pass name here
+    storageClassName: manual
+    ## the name of an existing PVC to use
+    existingClaim: airflow-logs-pvc
+
 # dags:
 #   gitSync:
 #     enabled: true
