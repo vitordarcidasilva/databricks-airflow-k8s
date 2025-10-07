@@ -44,6 +44,7 @@ with DAG(
             task_id="job_1",
             application_id=application_id,
             execution_role_arn=JOB_ROLE_ARN,
+            enable_application_ui_links=True,
             job_driver={
                 "sparkSubmit": {
                     "entryPoint": "s3://external-mount-volume/emr-jobs/hello-world.py"
