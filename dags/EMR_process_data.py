@@ -22,7 +22,7 @@ DEFAULT_MONITORING_CONFIG = {
 
 with DAG(
     dag_id="emr_process_data",
-    schedule_interval=None,
+    schedule=None,
     start_date=datetime(2025, 10, 6),
     tags=["emr"],
     catchup=False
