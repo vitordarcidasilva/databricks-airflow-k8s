@@ -8,9 +8,10 @@ from airflow.providers.amazon.aws.operators.emr import (
     EmrServerlessDeleteApplicationOperator
 )
 
-#role emr
+#role emr e configurações AWS
 JOB_ROLE_ARN = "arn:aws:iam::986629373361:role/EMRServerlessJobRole"
 S3_LOG_LOCATION = "s3://external-mount-volume/emr-logs"
+AWS_REGION = "us-east-1"  # Altere para sua região se necessário
 
 DEFAULT_MONITORING_CONFIG = {
     "monitoringConfiguration": {
@@ -34,6 +35,7 @@ with DAG(
             release_label="emr-6.13.0",
             config={"name": "airflow-test"},
             aws_conn_id="aws_conn",
+            region_name=AWS_REGION,
         )
 
         application_id = create_app_application.output
@@ -49,18 +51,21 @@ with DAG(
             },
             configuration_overrides=DEFAULT_MONITORING_CONFIG,
             aws_conn_id="aws_conn",
+            region_name=AWS_REGION,
         )   
 
         stop_application = EmrServerlessStopApplicationOperator(
             task_id="stop_application",
             application_id=application_id,
             aws_conn_id="aws_conn",
+            region_name=AWS_REGION,
         )
 
         delete_app_application = EmrServerlessDeleteApplicationOperator(
             task_id="delete_app_application",
             application_id=application_id,
             aws_conn_id="aws_conn",
+            region_name=AWS_REGION,
         )
 
         create_app_application >> job_1 >> stop_application >> delete_app_application
