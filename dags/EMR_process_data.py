@@ -33,6 +33,7 @@ with DAG(
             job_type="SPARK",
             release_label="emr-6.13.0",
             config={"name": "airflow-test"},
+            aws_conn_id="aws_conn",
         )
 
         application_id = create_app_application.output
@@ -47,16 +48,19 @@ with DAG(
                 }
             },
             configuration_overrides=DEFAULT_MONITORING_CONFIG,
+            aws_conn_id="aws_conn",
         )   
 
         stop_application = EmrServerlessStopApplicationOperator(
             task_id="stop_application",
             application_id=application_id,
+            aws_conn_id="aws_conn",
         )
 
         delete_app_application = EmrServerlessDeleteApplicationOperator(
             task_id="delete_app_application",
             application_id=application_id,
+            aws_conn_id="aws_conn",
         )
 
         create_app_application >> job_1 >> stop_application >> delete_app_application
